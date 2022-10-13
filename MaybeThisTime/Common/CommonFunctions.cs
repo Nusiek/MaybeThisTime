@@ -87,6 +87,14 @@ namespace MaybeThisTime.Common
            
         }
 
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // convert to string
+
+        public static string ToString(int element)
+        {
+            string text = element.ToString();
+            return text;
+        }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         public static bool IsElementDisplayed(IWebElement element)
@@ -148,6 +156,9 @@ namespace MaybeThisTime.Common
    
         public static void ChooseElementFromList(By findElementBy, string attributeName, string attributeValue)
         {
+            TestContext.Progress.WriteLine("attributeName: " + attributeName);
+            TestContext.Progress.WriteLine("attributeValue: " + attributeValue);
+
             IList<IWebElement> elementsList = driver.FindElements(findElementBy);
 
             for (int element = 0; element < elementsList.Count; element++)
@@ -159,7 +170,6 @@ namespace MaybeThisTime.Common
             }
         }
 
-
         /// <summary>
         /// <para> int selectedBy = 1 -> element.SelectByValue() </para> 
         /// <para> int selectedBy = 2 -> element.SelectByText() </para> 
@@ -170,14 +180,19 @@ namespace MaybeThisTime.Common
         public static void ChooseElementFromList(IWebElement webElement, int selectedBy, string attributeValue)
         {
             ElementClick(webElement);
-            //ScrollToElement(webElement);
             SelectElement element = new SelectElement(webElement);
 
             if (selectedBy == 1)
-            element.SelectByValue($"{attributeValue}");
-
+            {
+                element.SelectByValue($"{attributeValue}");
+            }
+           
             if(selectedBy == 2)
+            {
                 element.SelectByText($"{attributeValue}");
+            }
+                
+
         }
 
         /// <summary>
@@ -220,16 +235,11 @@ namespace MaybeThisTime.Common
         //--------------------------------------------------------------------------------------------------------------------------------------
         // scroll
 
-        public void ScrollToElement2(IWebElement element)
+        public static void ScrollToElement(IWebElement element)
         {
             TouchActions action = new TouchActions(driver);
-           // double screenHeightStart = (1280 * 0.5);
-           // double screenHeightEnd = (1280 * 0.2);
-           // action.Press(50, screenHeightStart).Wait(1000).MoveTo(50, screenHeightEnd).Release().Perform();
+            action.ScrollToElement(element).Perform();
 
-
-            int elementLocationY = element.Location.Y;
-            
         }
 
 
@@ -258,21 +268,6 @@ namespace MaybeThisTime.Common
             string email = $"{stringBefore}@{stringAfter}.com";
             return email;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //--------------------------------------------------------------------------------------------------------------------------------------
 

@@ -1,5 +1,6 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime.Internal.Transform;
 using AngleSharp.Dom;
 using AngleSharp.Text;
 using MaybeThisTime.Common;
@@ -159,10 +160,18 @@ namespace MaybeThisTime.PageObjects
         //--------------------------------------------------------------------------------------------------------------------------------------
         // IWebElement
 
+        public IWebElement IWebElement(IWebElement element)
+        {
+            IWebElement webElement = element;
+            return webElement;
+        }
+        /*
+
         public IWebElement CreateAnAccountText()
         {
             return createAnAccountText;
         }
+        
         // personal information
         public IWebElement CheckGenderMan()
         {
@@ -294,9 +303,16 @@ namespace MaybeThisTime.PageObjects
         {
             return submitAccountButton;
         }
-
+        */
         //--------------------------------------------------------------------------------------------------------------------------------------
         // By
+        
+        public By ElementBy(By element)
+        {
+            By webElement = element;
+            return webElement;
+        }
+        /*
         public By CreateAnAccountTextBy()
         {
             return createAnAccountTextBy;
@@ -392,17 +408,17 @@ namespace MaybeThisTime.PageObjects
         {
             return addressCityBy;
         }
-
+        */
         public By AddressStateById()
         {
             return addressStateById;
         }
-
+        
         public By AddressStatesByXPath()
         {
             return addressStatesByXPath;
         }
-
+        /*
         public By AddressPostCodeBy()
         {
             return addressPostCodeBy;
@@ -451,118 +467,397 @@ namespace MaybeThisTime.PageObjects
         {
             return typeCheckboxBy;
         }
+        */
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // page dictionary
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = checkNewsletter </para>
+        /// <para> 16 = addressCompanyName </para>
+        /// <para> 17 = addressStreetAndNumber </para>
+        /// <para> 18 = addressApartmentNumber </para>
+        /// <para> 19 = addressCity </para>
+        /// <para> 20 = addressState </para>
+        /// <para> 21 = addressPostCode </para>
+        /// <para> 22 = addressCountry </para>
+        /// <para> 23 = additionalInfromation </para>
+        /// <para> 24 = phoneHome </para>
+        /// <para> 25 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 27 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <returns></returns>
+        public IWebElement iWebElementDictionary(int dictionaryId)
+        {
+            /*
+            IWebElement createAnAccountText2 = CreateAnAccountText();
+            IWebElement checkGenderMan = CheckGenderMan();
+            IWebElement checkGenderFemale = CheckGenderFemale();
+            IWebElement customerFirstName = CustomerFirstName();
+            IWebElement customerLastName = CustomerLastName();
+            IWebElement customerEmail = CustomerEmail();
+            IWebElement accountPassword = AccountPassword();
+            IWebElement birthDay = BirthDay();
+            IWebElement birthMonth = BirthMonth();
+            IWebElement birthYear = BirthYear();
+            IWebElement checkNewsletter = CheckNewsletter();
+            IWebElement checkSpecialOffers = CheckSpecialOffers();
+            IWebElement addressFirstName = AddressFirstName();
+            IWebElement addressLastName = AddressLastName();
+            IWebElement addressCompanyName = AddressCompanyName();
+            IWebElement addressStreetAndNumber = AddressStreetAndNumber();
+            IWebElement addressApartmentNumber = AddressApartmentNumber();
+            IWebElement addressCity = AddressCity();
+            IWebElement addressState = AddressState();
+            IWebElement addressPostCode = AddressPostCode();
+            IWebElement addressCountry = AddressCountry();
+            IWebElement additionalInfromation = AdditionalInfromation();
+            IWebElement phoneHome = PhoneHome();
+            IWebElement phoneMobile = PhoneMobile();
+            IWebElement emailAddresAlias = EmailAddresAlias();
+            IWebElement submitAccountButton = SubmitAccountButton();
+            */
+
+            IWebElement createAnAccountText0 = IWebElement(createAnAccountText);
+            IWebElement checkGenderMan0 = IWebElement(checkGenderMan);
+            IWebElement checkGenderFemale0 = IWebElement(checkGenderFemale);
+            IWebElement customerFirstName0 = IWebElement(customerFirstName);
+            IWebElement customerLastName0 = IWebElement(customerLastName);
+            IWebElement customerEmail0 = IWebElement(customerEmail);
+            IWebElement accountPassword0 = IWebElement(accountPassword);
+            IWebElement birthDay0 = IWebElement(birthDay);
+            IWebElement birthMonth0 = IWebElement(birthMonth);
+            IWebElement birthYear0 = IWebElement(birthYear);
+            IWebElement checkNewsletter0 = IWebElement(checkNewsletter);
+            IWebElement checkSpecialOffers0 = IWebElement(checkSpecialOffers);
+            IWebElement addressFirstName0 = IWebElement(addressFirstName);
+            IWebElement addressLastName0 = IWebElement(addressLastName);
+            IWebElement addressCompanyName0 = IWebElement(addressCompanyName);
+            IWebElement addressStreetAndNumber0 = IWebElement(addressStreetAndNumber);
+            IWebElement addressApartmentNumber0 = IWebElement(addressApartmentNumber);
+            IWebElement addressCity0 = IWebElement(addressCity);
+            IWebElement addressState0 = IWebElement(addressState);
+            IWebElement addressPostCode0 = IWebElement(addressPostCode);
+            IWebElement addressCountry0 = IWebElement(addressCountry);
+            IWebElement additionalInfromation0 = IWebElement(additionalInfromation);
+            IWebElement phoneHome0 = IWebElement(phoneHome);
+            IWebElement phoneMobile0 = IWebElement(phoneMobile);
+            IWebElement emailAddresAlias0 = IWebElement(emailAddresAlias);
+            IWebElement submitAccountButton0 = IWebElement(submitAccountButton);
+
+            Dictionary<int, IWebElement> iWebElementDictionary = new Dictionary<int, IWebElement>()
+            {
+                { 1, createAnAccountText0},
+                { 2, checkGenderMan0},
+                { 3, checkGenderFemale0},
+                { 4, customerFirstName0},
+                { 5, customerLastName0},
+                { 6, customerEmail0},
+                { 7, accountPassword0},
+                { 8, birthDay0},
+                { 9, birthMonth0},
+                { 10, birthYear0},
+                { 11, checkNewsletter0},
+                { 12, checkSpecialOffers0},
+                { 13, addressFirstName0},
+                { 14, addressLastName0},
+                { 15, checkNewsletter0},
+                { 16, addressCompanyName0},
+                { 17, addressStreetAndNumber0},
+                { 18, addressApartmentNumber0},
+                { 19, addressCity0},
+                { 20, addressState0},
+                { 21, addressPostCode0},
+                { 22, addressCountry0},
+                { 23, additionalInfromation0},
+                { 24, phoneHome0},
+                { 25, phoneMobile0},
+                { 26, emailAddresAlias0},
+                { 27, submitAccountButton0},
+            };
+            /*
+            KeyValuePair<int, IWebElement> keyValuePair = iWebElementDictionary.ElementAt(dictionaryId);
+            IWebElement elementFromDictionary = keyValuePair.Value;
+            */
+            IWebElement elementFromDictionary = iWebElementDictionary[dictionaryId];
+            return elementFromDictionary;
+        }
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressStateBy </para>
+        /// <para> 21 = addressPostCode </para>
+        /// <para> 22 = addressCountry </para>
+        /// <para> 23 = additionalInfromation </para>
+        /// <para> 24 = phoneHome </para>
+        /// <para> 25 = phoneMobile </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = typeRadioButton </para>
+        /// <para> 28 = typeCheckboxBy </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <returns></returns>
+        public By ElementByDictionary(int dictionaryId)
+        {
+            By createAnAccountTextBy0 = ElementBy(createAnAccountTextBy);
+            By checkGenderManBy0 = ElementBy(checkGenderManBy);
+            By checkGenderFemaleBy0 = ElementBy(checkGenderFemaleBy);
+            By customerFirstNameBy0 = ElementBy(customerFirstNameBy);
+            By customerLastNameBy0 = ElementBy(customerLastNameBy);
+            By customerEmailBy0 = ElementBy(customerEmailBy);
+            By accountPasswordBy0 = ElementBy(accountPasswordBy);
+            By birthDayBy0 = ElementBy(birthDayBy);
+            By birthMonthsBy0 = ElementBy(birthMonthsBy);
+            By birthYearBy0 = ElementBy(birthYearBy);
+            By checkNewsletterBy0 = ElementBy(checkNewsletterBy);
+            By checkSpecialOffersBy0 = ElementBy(checkSpecialOffersBy);
+            By addressFirstNameBy0 = ElementBy(addressFirstNameBy);
+            By addressLastNameBy0 = ElementBy(addressLastNameBy);
+            By addressCompanyNameBy0 = ElementBy(addressCompanyNameBy);
+            By addressStreetAndNumberBy0 = ElementBy(addressStreetAndNumberBy);
+            By addressApartmentNumberBy0 = ElementBy(addressApartmentNumberBy);
+            By addressCityBy0 = ElementBy(addressCityBy);
+            By addressStateBy0 = ElementBy(addressStateById);
+            By addressStatesBy0 = ElementBy(addressStatesByXPath);
+            By addressPostCodeBy0 = ElementBy(addressPostCodeBy);
+            By addressCountryBy0 = ElementBy(addressCountryBy);
+            By additionalInfromationBy0 = ElementBy(additionalInfromationBy);
+            By phoneHomeBy0 = ElementBy(phoneHomeBy);
+            By phoneMobileBy0 = ElementBy(phoneMobileBy);
+            By submitAccountButtonBy0 = ElementBy(submitAccountButtonBy);
+            By typeRadioButtonBy0 = ElementBy(typeRadioButtonBy);
+            By typeCheckboxBy0 = ElementBy(typeCheckboxBy);
+
+            Dictionary<int, By> elementByDictionary = new Dictionary<int, By>()
+            {
+                {1, createAnAccountTextBy0},
+                {2, checkGenderManBy0},
+                {3, checkGenderFemaleBy0},
+                {4, customerFirstNameBy0},
+                {5, customerLastNameBy0},
+                {6, customerEmailBy0},
+                {7, accountPasswordBy0},
+                {8, birthDayBy0},
+                {9, birthMonthsBy0},
+                {10, birthYearBy0},
+                {11, checkNewsletterBy0},
+                {12, checkSpecialOffersBy0},
+                {13, addressFirstNameBy0},
+                {14, addressLastNameBy0},
+                {15, addressCompanyNameBy0},
+                {16, addressStreetAndNumberBy0},
+                {17, addressApartmentNumberBy0},
+                {18, addressCityBy0},
+                {19, addressStateBy0},
+                {20, addressStatesBy0},
+                {21, addressPostCodeBy0},
+                {22, addressCountryBy0},
+                {23, additionalInfromationBy0},
+                {24, phoneHomeBy0},
+                {25, phoneMobileBy0},
+                {26, submitAccountButtonBy0},
+                {2727, typeRadioButtonBy0},
+                {28, typeCheckboxBy0},
+               
+            };
+
+            By elementBy;
+            elementBy = elementByDictionary[dictionaryId];
+            return elementBy;
+ 
+        }
+
+
+
 
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // page action
         //--------------------------------------------------------------------------------------------------------------------------------------
-        // input click
-        // personal information
-        public void CustomerFirstNameClick()
+
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = checkNewsletter </para>
+        /// <para> 16 = addressCompanyName </para>
+        /// <para> 17 = addressStreetAndNumber </para>
+        /// <para> 18 = addressApartmentNumber </para>
+        /// <para> 19 = addressCity </para>
+        /// <para> 20 = addressState </para>
+        /// <para> 21 = addressPostCode </para>
+        /// <para> 22 = addressCountry </para>
+        /// <para> 23 = additionalInfromation </para>
+        /// <para> 24 = phoneHome </para>
+        /// <para> 25 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 27 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        public void ActionElementClick(int dictionaryId)
         {
-           CommonFunctions.ElementClick(CustomerFirstName());
+            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            CommonFunctions.ElementClick(elementFromDictionary);
         }
 
-        public void CustomerLastNameClick()
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = checkNewsletter </para>
+        /// <para> 16 = addressCompanyName </para>
+        /// <para> 17 = addressStreetAndNumber </para>
+        /// <para> 18 = addressApartmentNumber </para>
+        /// <para> 19 = addressCity </para>
+        /// <para> 20 = addressState </para>
+        /// <para> 21 = addressPostCode </para>
+        /// <para> 22 = addressCountry </para>
+        /// <para> 23 = additionalInfromation </para>
+        /// <para> 24 = phoneHome </para>
+        /// <para> 25 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 27 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <param name="textForField"></param>
+        public void ActionElementClickAndSendText(int dictionaryId, string textForField)
         {
-            CommonFunctions.ElementClick(CustomerLastName());
+            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            CommonFunctions.ElementClick(elementFromDictionary);
+            CommonFunctions.SendText(elementFromDictionary, textForField);
         }
 
-        public void CustomerEmailClick()
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = checkNewsletter </para>
+        /// <para> 16 = addressCompanyName </para>
+        /// <para> 17 = addressStreetAndNumber </para>
+        /// <para> 18 = addressApartmentNumber </para>
+        /// <para> 19 = addressCity </para>
+        /// <para> 20 = addressState </para>
+        /// <para> 21 = addressPostCode </para>
+        /// <para> 22 = addressCountry </para>
+        /// <para> 23 = additionalInfromation </para>
+        /// <para> 24 = phoneHome </para>
+        /// <para> 25 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 27 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        public string ActionElementGetText(int dictionaryId)
         {
-            CommonFunctions.ElementClick(CustomerEmail());
-        }
-
-        public void AccountPasswordClick()
-        {
-            CommonFunctions.ElementClick(AccountPassword());
-        }
-
-        // address
-        public void AddressFirstNameClick()
-        {
-            CommonFunctions.ElementClick(AddressFirstName());
-        }
-
-        public void AddressLastNameClick()
-        {
-            CommonFunctions.ElementClick(AddressLastName());
-        }
-
-        public void AddressCompanyNameClick()
-        {
-            CommonFunctions.ElementClick(AddressCompanyName());
-        }
-
-        public void AddressStreetAndNumberClick()
-        {
-            CommonFunctions.ElementClick(AddressStreetAndNumber());
-        }
-
-        public void AddressApartmentNumberClick()
-        {
-            CommonFunctions.ElementClick(AddressApartmentNumber());
-        }
-
-        public void AddressCityClick()
-        {
-            CommonFunctions.ElementClick(AddressCity());
-        }
-
-        public void AddressPostCodeClick()
-        {
-            CommonFunctions.ElementClick(AddressPostCode());
-        }
-
-        // ---
-
-        public void AdditionalInfromationClick()
-        {
-            CommonFunctions.ElementClick(AdditionalInfromation());
-        }
-
-        public void PhoneHomeClick()
-        {
-            CommonFunctions.ElementClick(PhoneHome());
-        }
-
-        public void PhoneMobileClick()
-        {
-            CommonFunctions.ElementClick(PhoneMobile());
-        }
-
-        public void EmailAddresAliasClick()
-        {
-            CommonFunctions.ElementClick(EmailAddresAlias());
-        }
-
-        // ---
-        public void SubmitAccountButtonClick()
-        {
-            CommonFunctions.ElementClick(SubmitAccountButton());
+            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            string text = CommonFunctions.GetText(elementFromDictionary);
+            return text;
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        // radio button click
 
-        public void CheckGenderMrs()
+        /// <summary>
+        /// <para> gender = 1 -> dictionaryId -> "Mr." </para>
+        /// <para> gender = 2 -> dictionaryId -> "Mr."</para>
+        /// </summary>
+        /// <param name="gender"></param>
+        /// <returns></returns>
+        public int ChoseGender(int gender)
         {
-            string attributeName = "value";
-            string attributeValue = ChooseGender(2);
-            CommonFunctions.ChooseElementFromList(TypeRadioButtonBy(), attributeName, attributeValue);
+            return gender switch
+            {
+                1 => 2,
+                2 => 3,
+                _ => 3
+            };
         }
-
-        public void CheckGenderMr()
+        /// <summary>
+        /// <para> genderNumber = 1 -> "Mr."</para>
+        /// <para> genderNumber = 2 -> "Mrs."</para>
+        /// </summary>
+        /// <param name="gender"></param>
+        public void CheckGender(int gender)
         {
             string attributeName = "value";
-            string attributeValue = ChooseGender(1);
-            CommonFunctions.ChooseElementFromList(TypeRadioButtonBy(), attributeName, attributeValue);
+            string attributeValue = CommonFunctions.ToString(gender);
+
+            By elementBy = ElementByDictionary(2727);
+            TestContext.Progress.WriteLine("elementBy: " + elementBy);
+            Thread.Sleep(5000);
+            CommonFunctions.ChooseElementFromList(elementBy, attributeName, attributeValue);
         }
 
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // check click
-
+        /*
         public void CheckNewsletterClick()
         {
             CommonFunctions.ElementClick(TypeCheckboxBy(), 0);
@@ -574,24 +869,27 @@ namespace MaybeThisTime.PageObjects
             CommonFunctions.ElementClick(TypeCheckboxBy(), 1);
 
         }
-
+        */
         //--------------------------------------------------------------------------------------------------------------------------------------
         // choose an option from drop down list
         // date of birth
-        
+
         public void ChooseBirthDayFromDropDownList(string birthDay)
         {
-            CommonFunctions.ChooseElementFromList(BirthDay(), 1, birthDay);
+            IWebElement element = iWebElementDictionary(8);
+            CommonFunctions.ChooseElementFromList(element, 1, birthDay);
         }
 
         public void ChooseBirthMonthsFromDropDownList(string birthMonth)
         {
-            CommonFunctions.ChooseElementFromList(BirthMonth(), 1, birthMonth);
+            IWebElement element = iWebElementDictionary(9);
+            CommonFunctions.ChooseElementFromList(element, 1, birthMonth);
         }
 
         public void ChooseBirthYearFromDropDownList(string birthYear)
         {
-            CommonFunctions.ChooseElementFromList(BirthYear(), 1, birthYear);
+            IWebElement element = iWebElementDictionary(10);
+            CommonFunctions.ChooseElementFromList(element, 1, birthYear);
         }
 
         public void ChooseBirthDate(string birthDay, string birthMonth, string birthYear)
@@ -601,57 +899,34 @@ namespace MaybeThisTime.PageObjects
             ChooseBirthYearFromDropDownList(birthYear);
         }
 
-        // state
-
-        public void ChooseStateFromDropDownList()
-        {
-            string stateName = "Alaska";
-            CommonFunctions.ChooseElementFromList(AddressState(), 2, stateName);
-        }
-
         public void ChooseStateFromDropDownList(string stateName)
         {
-            IWebElement parentElement = AddressState();
-            By childElements = AddressStatesByXPath();
+            IWebElement parentElement = iWebElementDictionary(20);
+            By childElements = ElementByDictionary(19);
             CommonFunctions.ChooseElementFromList(parentElement, childElements, stateName);
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        // switch
-        /// <summary>
-        /// <para> int genderNumber = 1 => "Mr."</para>
-        /// <para> int genderNumber = 2 => "Mrs."</para>
-        /// </summary>
-        /// <param name="genderNumber"></param>
-        /// <returns></returns>
-        public string ChooseGender(int genderNumber)
-        {
-            return genderNumber switch
-            {
-                1 => "1",
-                2 => "2",
-                _ => "2"
-            };
-        }
-
 
         public void DeleteCustomerEmail()
         {    
-            IWebElement email = CustomerEmail();
+            IWebElement email = iWebElementDictionary(6);
             string symbol = "a";
             int howManyTimePressBackspace = 1;
-            CustomerEmailClick();
+            ActionElementClick(6);
             CommonFunctions.PressKeyControlPlusSymbol(email, symbol);
             CommonFunctions.PressKeyBackspace(email, howManyTimePressBackspace);
         }
 
         public string GetCreateAnAccountText()
         {
-            By createAnAccountTextBy = CreateAnAccountTextBy();
+            By elementBy = ElementByDictionary(1);
+            //var type = createAnAccountTextBy.GetType();
+            //TestContext.Progress.WriteLine("type: " + type); 
             double time = 10;
-            CommonFunctions.WaitUtilElementDisplayBy(createAnAccountTextBy, time);
-            IWebElement createAnAccountText = CreateAnAccountText();
-            string text = CommonFunctions.GetText(createAnAccountText);
+            CommonFunctions.WaitUtilElementDisplayBy(elementBy, time);
+            IWebElement element = iWebElementDictionary(1);
+            string text = CommonFunctions.GetText(element);
             return text;
         }
 
@@ -672,24 +947,6 @@ namespace MaybeThisTime.PageObjects
 
         //--------------------------------------------------------------------------------------------------------------------------------------
 
-        public void TestDictionary(int dictionaryId, string textForField)
-        {
-            
-            IWebElement firstName = CustomerFirstName();
-            IWebElement lastName = CustomerLastName();
 
-            Dictionary<int, IWebElement> testDictionary = new Dictionary<int, IWebElement>()
-            {
-                { 1, firstName},
-                { 2, lastName}
-            };
-            
-            KeyValuePair<int, IWebElement> keyValuePair = testDictionary.ElementAt(dictionaryId);
-            IWebElement elementFromDictionary = keyValuePair.Value;
-            CommonFunctions.SendText(elementFromDictionary, textForField);
-
-
-        }
-        
     }
 }

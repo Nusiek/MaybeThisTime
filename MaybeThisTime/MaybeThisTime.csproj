@@ -29,5 +29,11 @@
     <PackageReference Include="WebDriverManager" Version="2.13.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Common\CommonFunctions.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 
 </Project>

@@ -87,10 +87,6 @@ namespace MaybeThisTime.TestsCases
         }
 
 
-
-
-
-
         //--------------------------------------------------------------------------------------------------------------------------------------
         private static IEnumerable<TestCaseData> TestDataConfigForLoginValidationToAccountWrongData()
         {
@@ -172,7 +168,7 @@ namespace MaybeThisTime.TestsCases
             string emptyEmail = "";
 
             // emial - an account with this email has already been registered
-            string accountRegistered = "";
+            string accountRegistered = "MTTAutomationPractice@MTTAutomationPractice.com";
 
             // wrong emial
             string wrongEmailv1 = "aaaa";
