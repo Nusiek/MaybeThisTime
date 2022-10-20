@@ -1,5 +1,6 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
 using Amazon.Runtime.Internal.Transform;
 using AngleSharp.Dom;
 using AngleSharp.Text;
@@ -19,6 +20,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Collections.Specialized.BitVector32;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MaybeThisTime.PageObjects
@@ -157,6 +159,8 @@ namespace MaybeThisTime.PageObjects
 
         private By typeRadioButtonBy = By.Name("id_gender");
         private By typeCheckboxBy = By.XPath("//input[@type='checkbox']");
+
+
         //--------------------------------------------------------------------------------------------------------------------------------------
         // IWebElement
 
@@ -165,145 +169,7 @@ namespace MaybeThisTime.PageObjects
             IWebElement webElement = element;
             return webElement;
         }
-        /*
 
-        public IWebElement CreateAnAccountText()
-        {
-            return createAnAccountText;
-        }
-        
-        // personal information
-        public IWebElement CheckGenderMan()
-        {
-            return checkGenderMan;
-        }
-
-        public IWebElement CheckGenderFemale()
-        {
-            return checkGenderFemale;
-        }
-
-        public IWebElement CustomerFirstName()
-        {
-            return customerFirstName;
-        }
-
-        public IWebElement CustomerLastName()
-        {
-            return customerLastName;
-        }
-
-        public IWebElement CustomerEmail()
-        {
-            return customerEmail;
-        }
-
-        public IWebElement AccountPassword()
-        {
-            return accountPassword;
-        }
-
-        // date of birth
-        public IWebElement BirthDay()
-        {
-            return birthDay;
-        }
-
-        public IWebElement BirthMonth()
-        {
-            return birthMonth;
-        }
-
-        public IWebElement BirthYear()
-        {
-            return birthYear;
-        }
-
-        // ---
-        public IWebElement CheckNewsletter()
-        {
-            return checkNewsletter;
-        }
-
-        public IWebElement CheckSpecialOffers()
-        {
-            return checkSpecialOffers;
-        }
-
-        //-------------------------------------------------------------------------
-        // address
-        public IWebElement AddressFirstName()
-        {
-            return addressFirstName;
-        }
-
-        public IWebElement AddressLastName()
-        {
-            return addressLastName;
-        }
-        public IWebElement AddressCompanyName()
-        {
-            return addressCompanyName;
-        }
-
-        public IWebElement AddressStreetAndNumber()
-        {
-            return addressStreetAndNumber;
-        }
-
-        public IWebElement AddressApartmentNumber()
-        {
-            return addressApartmentNumber;
-        }
-
-        public IWebElement AddressCity()
-        {
-            return addressCity;
-        }
-
-        public IWebElement AddressState()
-        {
-            return addressState;
-        }
-
-        public IWebElement AddressPostCode()
-        {
-            return addressPostCode;
-        }
-
-        public IWebElement AddressCountry()
-        {
-            return addressCountry;
-        }
-
-        // ---
-
-        public IWebElement AdditionalInfromation()
-        {
-            return additionalInfromation;
-        }
-
-        public IWebElement PhoneHome()
-        {
-            return phoneHome;
-        }
-
-        public IWebElement PhoneMobile()
-        {
-            return phoneMobile;
-        }
-
-        public IWebElement EmailAddresAlias()
-        {
-            return emailAddresAlias; 
-        }
-
-        // ---
-        public IWebElement SubmitAccountButton()
-        {
-            return submitAccountButton;
-        }
-        */
         //--------------------------------------------------------------------------------------------------------------------------------------
         // By
         
@@ -312,162 +178,7 @@ namespace MaybeThisTime.PageObjects
             By webElement = element;
             return webElement;
         }
-        /*
-        public By CreateAnAccountTextBy()
-        {
-            return createAnAccountTextBy;
-        }
-        // personal information
 
-        public By CheckGenderManBy()
-        {
-            return checkGenderManBy;
-        }
-
-        public By CheckGenderFemaleBy()
-        {
-            return checkGenderFemaleBy;
-        }
-
-        public By CustomerFirstNameBy()
-        {
-            return customerFirstNameBy;
-        }
-
-        public By CustomerLastNameBy()
-        {
-            return customerLastNameBy;
-        }
-
-        public By CustomerEmailBy()
-        {
-            return customerEmailBy;
-        }
-
-        public By AccountPasswordBy()
-        {
-            return accountPasswordBy;
-        }
-
-        // date of birth
-
-        public By BirthDayBy()
-        {
-            return birthDayBy;
-        }
-
-        public By BirthMonthsBy()
-        {
-            return birthMonthsBy;
-        }
-
-        public By BirthYearBy()
-        {
-            return birthYearBy;
-        }
-
-        // ---
-
-        public By CheckNewsletterBy()
-        {
-            return checkNewsletterBy;
-        }
-
-        public By CheckSpecialOffersBy()
-        {
-            return checkSpecialOffersBy;
-        }
-
-        //-------------------------------------------------------------------------
-        // address
-        public By AddressFirstNameBy()
-        {
-            return addressFirstNameBy;
-        }
-
-        public By AddressLastNameBy()
-        {
-            return addressLastNameBy;
-        }
-
-        public By AddressCompanyNameBy()
-        {
-            return addressCompanyNameBy;
-        }
-        public By AddressStreetAndNumberBy()
-        {
-            return addressStreetAndNumberBy;
-        }
-
-        public By AddressApartmentNumberBy()
-        {
-            return addressApartmentNumberBy;
-        }
-
-        public By AddressCityBy()
-        {
-            return addressCityBy;
-        }
-        */
-        public By AddressStateById()
-        {
-            return addressStateById;
-        }
-        
-        public By AddressStatesByXPath()
-        {
-            return addressStatesByXPath;
-        }
-        /*
-        public By AddressPostCodeBy()
-        {
-            return addressPostCodeBy;
-        }
-
-        public By AddressCountryBy()
-        {
-            return addressCountryBy;
-        }
-
-        // ---
-        public By AdditionalInfromationBy()
-        {
-            return additionalInfromationBy;
-        }
-
-        public By PhoneHomeBy()
-        {
-            return phoneHomeBy;
-        }
-
-        public By PhoneMobileBy()
-        {
-            return phoneMobileBy;
-        }
-
-        public By EmailAddresAliasBy()
-        {
-            return emailAddresAliasBy;
-        }
-
-        // ---
-        public By SubmitAccountButtonBy()
-        {
-            return submitAccountButtonBy;
-        }
-
-        // list data
-
-        public By TypeRadioButtonBy()
-        {
-            return typeRadioButtonBy;
-        }
-
-        public By TypeCheckboxBy()
-        {
-            return typeCheckboxBy;
-        }
-        */
         //--------------------------------------------------------------------------------------------------------------------------------------
         // page dictionary
         //--------------------------------------------------------------------------------------------------------------------------------------
@@ -487,53 +198,23 @@ namespace MaybeThisTime.PageObjects
         /// <para> 12 = checkSpecialOffers </para>
         /// <para> 13 = addressFirstName </para>
         /// <para> 14 = addressLastName </para>
-        /// <para> 15 = checkNewsletter </para>
-        /// <para> 16 = addressCompanyName </para>
-        /// <para> 17 = addressStreetAndNumber </para>
-        /// <para> 18 = addressApartmentNumber </para>
-        /// <para> 19 = addressCity </para>
-        /// <para> 20 = addressState </para>
-        /// <para> 21 = addressPostCode </para>
-        /// <para> 22 = addressCountry </para>
-        /// <para> 23 = additionalInfromation </para>
-        /// <para> 24 = phoneHome </para>
-        /// <para> 25 = phoneMobile </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
-        /// <para> 27 = submitAccountButton </para>
+        /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
         public IWebElement iWebElementDictionary(int dictionaryId)
         {
-            /*
-            IWebElement createAnAccountText2 = CreateAnAccountText();
-            IWebElement checkGenderMan = CheckGenderMan();
-            IWebElement checkGenderFemale = CheckGenderFemale();
-            IWebElement customerFirstName = CustomerFirstName();
-            IWebElement customerLastName = CustomerLastName();
-            IWebElement customerEmail = CustomerEmail();
-            IWebElement accountPassword = AccountPassword();
-            IWebElement birthDay = BirthDay();
-            IWebElement birthMonth = BirthMonth();
-            IWebElement birthYear = BirthYear();
-            IWebElement checkNewsletter = CheckNewsletter();
-            IWebElement checkSpecialOffers = CheckSpecialOffers();
-            IWebElement addressFirstName = AddressFirstName();
-            IWebElement addressLastName = AddressLastName();
-            IWebElement addressCompanyName = AddressCompanyName();
-            IWebElement addressStreetAndNumber = AddressStreetAndNumber();
-            IWebElement addressApartmentNumber = AddressApartmentNumber();
-            IWebElement addressCity = AddressCity();
-            IWebElement addressState = AddressState();
-            IWebElement addressPostCode = AddressPostCode();
-            IWebElement addressCountry = AddressCountry();
-            IWebElement additionalInfromation = AdditionalInfromation();
-            IWebElement phoneHome = PhoneHome();
-            IWebElement phoneMobile = PhoneMobile();
-            IWebElement emailAddresAlias = EmailAddresAlias();
-            IWebElement submitAccountButton = SubmitAccountButton();
-            */
-
             IWebElement createAnAccountText0 = IWebElement(createAnAccountText);
             IWebElement checkGenderMan0 = IWebElement(checkGenderMan);
             IWebElement checkGenderFemale0 = IWebElement(checkGenderFemale);
@@ -577,19 +258,18 @@ namespace MaybeThisTime.PageObjects
                 { 12, checkSpecialOffers0},
                 { 13, addressFirstName0},
                 { 14, addressLastName0},
-                { 15, checkNewsletter0},
-                { 16, addressCompanyName0},
-                { 17, addressStreetAndNumber0},
-                { 18, addressApartmentNumber0},
-                { 19, addressCity0},
-                { 20, addressState0},
-                { 21, addressPostCode0},
-                { 22, addressCountry0},
-                { 23, additionalInfromation0},
-                { 24, phoneHome0},
-                { 25, phoneMobile0},
-                { 26, emailAddresAlias0},
-                { 27, submitAccountButton0},
+                { 15, addressCompanyName0},
+                { 16, addressStreetAndNumber0},
+                { 17, addressApartmentNumber0},
+                { 18, addressCity0},
+                { 19, addressState0},
+                { 20, addressPostCode0},
+                { 21, addressCountry0},
+                { 22, additionalInfromation0},
+                { 23, phoneHome0},
+                { 24, phoneMobile0},
+                { 25, emailAddresAlias0},
+                { 26, submitAccountButton0},
             };
             /*
             KeyValuePair<int, IWebElement> keyValuePair = iWebElementDictionary.ElementAt(dictionaryId);
@@ -619,7 +299,7 @@ namespace MaybeThisTime.PageObjects
         /// <para> 17 = addressApartmentNumber </para>
         /// <para> 18 = addressCity </para>
         /// <para> 19 = addressState </para>
-        /// <para> 20 = addressStateBy </para>
+        /// <para> 20 = addressStateById </para>
         /// <para> 21 = addressPostCode </para>
         /// <para> 22 = addressCountry </para>
         /// <para> 23 = additionalInfromation </para>
@@ -628,6 +308,7 @@ namespace MaybeThisTime.PageObjects
         /// <para> 26 = submitAccountButton </para>
         /// <para> 27 = typeRadioButton </para>
         /// <para> 28 = typeCheckboxBy </para>
+        /// <para> 29 = addressStateByXpath </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
@@ -651,7 +332,7 @@ namespace MaybeThisTime.PageObjects
             By addressStreetAndNumberBy0 = ElementBy(addressStreetAndNumberBy);
             By addressApartmentNumberBy0 = ElementBy(addressApartmentNumberBy);
             By addressCityBy0 = ElementBy(addressCityBy);
-            By addressStateBy0 = ElementBy(addressStateById);
+            By addressStateById0 = ElementBy(addressStateById);
             By addressStatesBy0 = ElementBy(addressStatesByXPath);
             By addressPostCodeBy0 = ElementBy(addressPostCodeBy);
             By addressCountryBy0 = ElementBy(addressCountryBy);
@@ -661,6 +342,7 @@ namespace MaybeThisTime.PageObjects
             By submitAccountButtonBy0 = ElementBy(submitAccountButtonBy);
             By typeRadioButtonBy0 = ElementBy(typeRadioButtonBy);
             By typeCheckboxBy0 = ElementBy(typeCheckboxBy);
+            By addressStateByXPath0 = ElementBy(addressStatesByXPath);
 
             Dictionary<int, By> elementByDictionary = new Dictionary<int, By>()
             {
@@ -682,7 +364,7 @@ namespace MaybeThisTime.PageObjects
                 {16, addressStreetAndNumberBy0},
                 {17, addressApartmentNumberBy0},
                 {18, addressCityBy0},
-                {19, addressStateBy0},
+                {19, addressStateById0},
                 {20, addressStatesBy0},
                 {21, addressPostCodeBy0},
                 {22, addressCountryBy0},
@@ -690,8 +372,9 @@ namespace MaybeThisTime.PageObjects
                 {24, phoneHomeBy0},
                 {25, phoneMobileBy0},
                 {26, submitAccountButtonBy0},
-                {2727, typeRadioButtonBy0},
+                {27, typeRadioButtonBy0},
                 {28, typeCheckboxBy0},
+                {29, addressStateByXPath0}
                
             };
 
@@ -725,25 +408,31 @@ namespace MaybeThisTime.PageObjects
         /// <para> 12 = checkSpecialOffers </para>
         /// <para> 13 = addressFirstName </para>
         /// <para> 14 = addressLastName </para>
-        /// <para> 15 = checkNewsletter </para>
-        /// <para> 16 = addressCompanyName </para>
-        /// <para> 17 = addressStreetAndNumber </para>
-        /// <para> 18 = addressApartmentNumber </para>
-        /// <para> 19 = addressCity </para>
-        /// <para> 20 = addressState </para>
-        /// <para> 21 = addressPostCode </para>
-        /// <para> 22 = addressCountry </para>
-        /// <para> 23 = additionalInfromation </para>
-        /// <para> 24 = phoneHome </para>
-        /// <para> 25 = phoneMobile </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
-        /// <para> 27 = submitAccountButton </para>
+        /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         public void ActionElementClick(int dictionaryId)
         {
             IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
             CommonFunctions.ElementClick(elementFromDictionary);
+        }
+
+        public UserAccountPage GoToUserAccountPage()
+        {
+            IWebElement elementFromDictionary = iWebElementDictionary(26);
+            CommonFunctions.ElementClick(elementFromDictionary);
+            return new UserAccountPage(driver);
         }
 
         /// <summary>
@@ -761,26 +450,25 @@ namespace MaybeThisTime.PageObjects
         /// <para> 12 = checkSpecialOffers </para>
         /// <para> 13 = addressFirstName </para>
         /// <para> 14 = addressLastName </para>
-        /// <para> 15 = checkNewsletter </para>
-        /// <para> 16 = addressCompanyName </para>
-        /// <para> 17 = addressStreetAndNumber </para>
-        /// <para> 18 = addressApartmentNumber </para>
-        /// <para> 19 = addressCity </para>
-        /// <para> 20 = addressState </para>
-        /// <para> 21 = addressPostCode </para>
-        /// <para> 22 = addressCountry </para>
-        /// <para> 23 = additionalInfromation </para>
-        /// <para> 24 = phoneHome </para>
-        /// <para> 25 = phoneMobile </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
-        /// <para> 27 = submitAccountButton </para>
+        /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <param name="textForField"></param>
-        public void ActionElementClickAndSendText(int dictionaryId, string textForField)
+        public void ActionElementSendText(int dictionaryId, string textForField)
         {
             IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
-            CommonFunctions.ElementClick(elementFromDictionary);
+            ActionElementClick(dictionaryId);
             CommonFunctions.SendText(elementFromDictionary, textForField);
         }
 
@@ -799,19 +487,18 @@ namespace MaybeThisTime.PageObjects
         /// <para> 12 = checkSpecialOffers </para>
         /// <para> 13 = addressFirstName </para>
         /// <para> 14 = addressLastName </para>
-        /// <para> 15 = checkNewsletter </para>
-        /// <para> 16 = addressCompanyName </para>
-        /// <para> 17 = addressStreetAndNumber </para>
-        /// <para> 18 = addressApartmentNumber </para>
-        /// <para> 19 = addressCity </para>
-        /// <para> 20 = addressState </para>
-        /// <para> 21 = addressPostCode </para>
-        /// <para> 22 = addressCountry </para>
-        /// <para> 23 = additionalInfromation </para>
-        /// <para> 24 = phoneHome </para>
-        /// <para> 25 = phoneMobile </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
-        /// <para> 27 = submitAccountButton </para>
+        /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         public string ActionElementGetText(int dictionaryId)
@@ -819,6 +506,102 @@ namespace MaybeThisTime.PageObjects
             IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
             string text = CommonFunctions.GetText(elementFromDictionary);
             return text;
+        }
+
+        /// <summary>
+        /// <para> dictionaryId :</para>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// <para> ----------------------------------- </para>
+        /// <para> deleteAction :</para>
+        /// <para> 0 = delete text by clicking backspace </para>
+        /// <para> 1 = delete text by cutting it </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <param name="textForField"></param>
+        /// <param name="deleteAction"></param>
+        public void ActionElementDeletedTextAndSendText(int dictionaryId, string textForField, int deleteAction)
+        {
+            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+
+            if(deleteAction == 0)
+            {
+                DeleteTextByClickingBackspace(dictionaryId);
+            }
+                
+            if (deleteAction == 1)
+            {
+                DeleteTextByCuttingIt(dictionaryId);
+            }
+                
+
+            CommonFunctions.SendText(elementFromDictionary, textForField);
+        }
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <returns></returns>
+        public string ActionElementGetAttributeValue(int dictionaryId)
+        {
+            IWebElement element = iWebElementDictionary(dictionaryId);
+            By elementBy = ElementByDictionary(dictionaryId);
+            string attributeName = "value";
+            Thread.Sleep(10000);
+            CommonFunctions.WaitUtilElementDisplayBy(elementBy, 10);
+            string elementValue = CommonFunctions.GetElmentAttributeValueByCss(element, attributeName);
+            TestContext.Progress.WriteLine("elementValue: " + elementValue);
+            return elementValue;
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
@@ -847,9 +630,7 @@ namespace MaybeThisTime.PageObjects
         {
             string attributeName = "value";
             string attributeValue = CommonFunctions.ToString(gender);
-
-            By elementBy = ElementByDictionary(2727);
-            TestContext.Progress.WriteLine("elementBy: " + elementBy);
+            By elementBy = ElementByDictionary(27);  
             Thread.Sleep(5000);
             CommonFunctions.ChooseElementFromList(elementBy, attributeName, attributeValue);
         }
@@ -899,30 +680,18 @@ namespace MaybeThisTime.PageObjects
             ChooseBirthYearFromDropDownList(birthYear);
         }
 
-        public void ChooseStateFromDropDownList(string stateName)
+        public void ChooseState(string stateName)
         {
-            IWebElement parentElement = iWebElementDictionary(20);
-            By childElements = ElementByDictionary(19);
-            CommonFunctions.ChooseElementFromList(parentElement, childElements, stateName);
+            IWebElement parentElement = iWebElementDictionary(19);
+            By childElement = ElementByDictionary(29);
+            CommonFunctions.ChooseElementFromList(parentElement, childElement, stateName);
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
 
-        public void DeleteCustomerEmail()
-        {    
-            IWebElement email = iWebElementDictionary(6);
-            string symbol = "a";
-            int howManyTimePressBackspace = 1;
-            ActionElementClick(6);
-            CommonFunctions.PressKeyControlPlusSymbol(email, symbol);
-            CommonFunctions.PressKeyBackspace(email, howManyTimePressBackspace);
-        }
-
         public string GetCreateAnAccountText()
         {
             By elementBy = ElementByDictionary(1);
-            //var type = createAnAccountTextBy.GetType();
-            //TestContext.Progress.WriteLine("type: " + type); 
             double time = 10;
             CommonFunctions.WaitUtilElementDisplayBy(elementBy, time);
             IWebElement element = iWebElementDictionary(1);
@@ -930,17 +699,79 @@ namespace MaybeThisTime.PageObjects
             return text;
         }
 
-        /*
-        public void DeleteTextForAddressAlias()
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        public void DeleteTextByClickingBackspace(int dictionaryId)
         {
-            IWebElement addressAlias = EmailAddresAlias();
-            string attributeName = "Value";
-            CommonFunctions.ScrollToElement(addressAlias);
-            EmailAddresAliasClick();
-            int howManyTimePressBackspace = CommonFunctions.GetValueLenght(addressAlias, attributeName);
-            CommonFunctions.PressKeyBackspace(addressAlias, howManyTimePressBackspace);
+            IWebElement element = iWebElementDictionary(dictionaryId);
+            string attributeName = "value";
+            CommonFunctions.DeleteTextByClickingBackspace(element, attributeName);
         }
-        */
+
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        public void DeleteTextByCuttingIt(int dictionaryId)
+        {
+            IWebElement element = iWebElementDictionary(dictionaryId);
+            CommonFunctions.DeleteTextByCuttingIt(element);
+        }
+        
 
 
 

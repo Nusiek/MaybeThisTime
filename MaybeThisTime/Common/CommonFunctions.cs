@@ -12,8 +12,10 @@ using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MaybeThisTime.Common
 {
@@ -78,14 +80,56 @@ namespace MaybeThisTime.Common
             element.SendKeys(Keys.Control + $"{symbol}");
         }
 
+        public static void ElementMarkText(IWebElement element)
+        {
+            string symbol = "a";
+            PressKeyControlPlusSymbol(element, symbol);
+        }
+
+        public static void ElementCopyText(IWebElement element)
+        {
+            string symbol = "c";
+            PressKeyControlPlusSymbol(element, symbol);
+        }
+        public static void ElementPasteText(IWebElement element)
+        {
+            string symbol = "v";
+            PressKeyControlPlusSymbol(element, symbol);
+        }
+
+        public static void ElementCutText(IWebElement element)
+        {
+            string symbol = "x";
+            PressKeyControlPlusSymbol(element, symbol);
+        }
+
         public static void PressKeyBackspace(IWebElement element, int howManyTime)
         {
-            for (int i = 0; i < howManyTime; i++)
+            element.SendKeys(Keys.End);
+
+            for (int i = 0; i <= howManyTime; i++)
             {
                 element.SendKeys(Keys.Backspace);
             }
-           
         }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        public static void DeleteTextByClickingBackspace(IWebElement element, string attributeName)
+        {
+            
+            int howManyTimePressBackspace = GetValueLenght(element, attributeName);
+            ElementClick(element);
+            PressKeyBackspace(element, howManyTimePressBackspace);
+        }
+
+        public static void DeleteTextByCuttingIt(IWebElement element)
+        {
+            ElementClick(element);
+            ElementMarkText(element);
+            ElementCutText(element);
+        }
+
+
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // convert to string
@@ -156,8 +200,8 @@ namespace MaybeThisTime.Common
    
         public static void ChooseElementFromList(By findElementBy, string attributeName, string attributeValue)
         {
-            TestContext.Progress.WriteLine("attributeName: " + attributeName);
-            TestContext.Progress.WriteLine("attributeValue: " + attributeValue);
+           // TestContext.Progress.WriteLine("attributeName: " + attributeName);
+           // TestContext.Progress.WriteLine("attributeValue: " + attributeValue);
 
             IList<IWebElement> elementsList = driver.FindElements(findElementBy);
 
@@ -202,14 +246,14 @@ namespace MaybeThisTime.Common
         /// <param name="childlEmentsBy"></param>
         /// <param name="textUI"></param>
 
-        public static void ChooseElementFromList(IWebElement parentElement, By childlEmentsBy, string textUI)
+        public static void ChooseElementFromList(IWebElement parentElement, By childlEmentBy, string textUI)
         {
             IWebElement elementParent = parentElement;
-            TouchActions action = new TouchActions(driver);
-            action.ScrollToElement(elementParent).Perform();
+            //TouchActions action = new TouchActions(driver);
+            //action.ScrollToElement(elementParent).Perform();
             ElementClick(elementParent);
 
-            IList<IWebElement> elementsList = driver.FindElements(childlEmentsBy);
+            IList<IWebElement> elementsList = driver.FindElements(childlEmentBy);
             int numbersOfElementInArray = elementsList.Count;
 
             string[] elementsArray = new string[numbersOfElementInArray];
@@ -269,7 +313,7 @@ namespace MaybeThisTime.Common
             return email;
         }
 
-        //--------------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------------
 
     }
 }

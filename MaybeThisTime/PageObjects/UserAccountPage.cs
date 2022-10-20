@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MaybeThisTime.PageObjects
 {
-    public class UserAccountAfterLoggingInPage
+    public class UserAccountPage
     {
 
         private IWebDriver driver;
 
-        public UserAccountAfterLoggingInPage(IWebDriver driver)
+        public UserAccountPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);

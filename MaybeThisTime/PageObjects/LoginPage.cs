@@ -181,10 +181,10 @@ namespace MaybeThisTime.PageObjects
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // go to another page
-        public UserAccountAfterLoggingInPage GoToUserAccountAfterLoggingInPage()
+        public UserAccountPage GoToUserAccountAfterLoggingInPage()
         {
             CommonFunctions.ElementClick(SubmitCreateButton());
-            return new UserAccountAfterLoggingInPage(driver);
+            return new UserAccountPage(driver);
         }
 
         public CreateAccountPage GoToCreateAccountPage()
@@ -264,10 +264,9 @@ namespace MaybeThisTime.PageObjects
             PasteNewEmailIntoCreateAccountFieldFromWebpage();
         }
 
-        public void AddNewEmailIntoCreateAccountFieldFromEmailGenerator()
+        public void RandomEmailAddress(string email)
         {
             IWebElement element = EmailForNewAccount();
-            string email = CommonFunctions.GenerateEmailAddress();
             CommonFunctions.WaitUtilElementDisplayBy(CreateEmailBy(), 5);
             EmailForNewAccountClick();
             CommonFunctions.SendText(element, email);           

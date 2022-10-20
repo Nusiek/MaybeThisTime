@@ -43,7 +43,7 @@ namespace MaybeThisTime.TestsCases
             MainPage mp = new MainPage(driver);
             LoginPage lp = mp.GoToLoginPage();
             lp.LogInAccount(registeredEmail, registeredPassword, true);
-            UserAccountAfterLoggingInPage uaalip = lp.GoToUserAccountAfterLoggingInPage();
+            UserAccountPage uaalip = lp.GoToUserAccountAfterLoggingInPage();
             string expectedText = "Sign out";
             string webText = uaalip.GetLogoutButtonText();
 
@@ -200,16 +200,5 @@ namespace MaybeThisTime.TestsCases
 
         }
 
-
-
-
-
-        /*
-    [TearDown]
-    public void CloseBrowser()
-    {
-        TestContext.Progress.WriteLine("Close Browser 2");
-    }
-    */
     }
 }
