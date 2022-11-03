@@ -13,6 +13,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -20,6 +21,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 using static System.Collections.Specialized.BitVector32;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -28,8 +30,6 @@ namespace MaybeThisTime.PageObjects
     public class CreateAccountPage
     {
         private IWebDriver driver;
-        //private CommonFunctions CommonFunctions;
-
 
         public CreateAccountPage(IWebDriver driver)
         {
@@ -156,10 +156,13 @@ namespace MaybeThisTime.PageObjects
 
 
         // list data
-
         private By typeRadioButtonBy = By.Name("id_gender");
         private By typeCheckboxBy = By.XPath("//input[@type='checkbox']");
 
+        // error list
+        [FindsBy(How = How.XPath, Using = "//div[@id=\"center_column\"]/div/p")]
+        private IWebElement mainErrorTextMessagesNumber;
+        private By errorMessagesListByXPath = By.XPath("//div[@class='alert alert-danger']/ol/li");
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // IWebElement
@@ -184,6 +187,7 @@ namespace MaybeThisTime.PageObjects
         //--------------------------------------------------------------------------------------------------------------------------------------
 
         /// <summary>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -210,10 +214,11 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = mainErrorTextMessagesNumber </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
-        public IWebElement iWebElementDictionary(int dictionaryId)
+        public IWebElement IWebElementDictionary(int dictionaryId)
         {
             IWebElement createAnAccountText0 = IWebElement(createAnAccountText);
             IWebElement checkGenderMan0 = IWebElement(checkGenderMan);
@@ -241,8 +246,9 @@ namespace MaybeThisTime.PageObjects
             IWebElement phoneMobile0 = IWebElement(phoneMobile);
             IWebElement emailAddresAlias0 = IWebElement(emailAddresAlias);
             IWebElement submitAccountButton0 = IWebElement(submitAccountButton);
+            IWebElement mainErrorTextMessagesNumber0 = IWebElement(mainErrorTextMessagesNumber);
 
-            Dictionary<int, IWebElement> iWebElementDictionary = new Dictionary<int, IWebElement>()
+            Dictionary<int, IWebElement> IWebElementDictionary = new Dictionary<int, IWebElement>()
             {
                 { 1, createAnAccountText0},
                 { 2, checkGenderMan0},
@@ -270,16 +276,18 @@ namespace MaybeThisTime.PageObjects
                 { 24, phoneMobile0},
                 { 25, emailAddresAlias0},
                 { 26, submitAccountButton0},
+                { 27, mainErrorTextMessagesNumber0}
             };
             /*
-            KeyValuePair<int, IWebElement> keyValuePair = iWebElementDictionary.ElementAt(dictionaryId);
+            KeyValuePair<int, IWebElement> keyValuePair = IWebElementDictionary.ElementAt(dictionaryId);
             IWebElement elementFromDictionary = keyValuePair.Value;
             */
-            IWebElement elementFromDictionary = iWebElementDictionary[dictionaryId];
+            IWebElement elementFromDictionary = IWebElementDictionary[dictionaryId];
             return elementFromDictionary;
         }
 
         /// <summary>
+        /// <para> By element dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -309,6 +317,7 @@ namespace MaybeThisTime.PageObjects
         /// <para> 27 = typeRadioButton </para>
         /// <para> 28 = typeCheckboxBy </para>
         /// <para> 29 = addressStateByXpath </para>
+        /// <para> 30 = errorMessagesListByXPath </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
@@ -343,6 +352,7 @@ namespace MaybeThisTime.PageObjects
             By typeRadioButtonBy0 = ElementBy(typeRadioButtonBy);
             By typeCheckboxBy0 = ElementBy(typeCheckboxBy);
             By addressStateByXPath0 = ElementBy(addressStatesByXPath);
+            By errorList = ElementBy(errorMessagesListByXPath);
 
             Dictionary<int, By> elementByDictionary = new Dictionary<int, By>()
             {
@@ -374,7 +384,8 @@ namespace MaybeThisTime.PageObjects
                 {26, submitAccountButtonBy0},
                 {27, typeRadioButtonBy0},
                 {28, typeCheckboxBy0},
-                {29, addressStateByXPath0}
+                {29, addressStateByXPath0},
+                {30, errorList}
                
             };
 
@@ -384,16 +395,12 @@ namespace MaybeThisTime.PageObjects
  
         }
 
-
-
-
-
         //--------------------------------------------------------------------------------------------------------------------------------------
         // page action
         //--------------------------------------------------------------------------------------------------------------------------------------
 
-
         /// <summary>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -420,22 +427,24 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = main error message: "There is/are number error/s" </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         public void ActionElementClick(int dictionaryId)
         {
-            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            IWebElement elementFromDictionary = IWebElementDictionary(dictionaryId);
             CommonFunctions.ElementClick(elementFromDictionary);
         }
 
         public UserAccountPage GoToUserAccountPage()
         {
-            IWebElement elementFromDictionary = iWebElementDictionary(26);
+            IWebElement elementFromDictionary = IWebElementDictionary(26);
             CommonFunctions.ElementClick(elementFromDictionary);
             return new UserAccountPage(driver);
         }
 
         /// <summary>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -462,17 +471,19 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = main error message: "There is/are number error/s" </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <param name="textForField"></param>
         public void ActionElementSendText(int dictionaryId, string textForField)
         {
-            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            IWebElement elementFromDictionary = IWebElementDictionary(dictionaryId);
             ActionElementClick(dictionaryId);
             CommonFunctions.SendText(elementFromDictionary, textForField);
         }
 
         /// <summary>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -499,17 +510,18 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = main error message: "There is/are number error/s" </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         public string ActionElementGetText(int dictionaryId)
         {
-            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            IWebElement elementFromDictionary = IWebElementDictionary(dictionaryId);
             string text = CommonFunctions.GetText(elementFromDictionary);
             return text;
         }
 
         /// <summary>
-        /// <para> dictionaryId :</para>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -536,6 +548,7 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = main error message: "There is/are number error/s" </para>
         /// <para> ----------------------------------- </para>
         /// <para> deleteAction :</para>
         /// <para> 0 = delete text by clicking backspace </para>
@@ -546,9 +559,11 @@ namespace MaybeThisTime.PageObjects
         /// <param name="deleteAction"></param>
         public void ActionElementDeletedTextAndSendText(int dictionaryId, string textForField, int deleteAction)
         {
-            IWebElement elementFromDictionary = iWebElementDictionary(dictionaryId);
+            IWebElement elementFromDictionary = IWebElementDictionary(dictionaryId);
 
-            if(deleteAction == 0)
+            DeleteText(dictionaryId, deleteAction);
+            /*
+            if (deleteAction == 0)
             {
                 DeleteTextByClickingBackspace(dictionaryId);
             }
@@ -557,12 +572,13 @@ namespace MaybeThisTime.PageObjects
             {
                 DeleteTextByCuttingIt(dictionaryId);
             }
-                
+               */ 
 
             CommonFunctions.SendText(elementFromDictionary, textForField);
         }
 
         /// <summary>
+        /// <para> IWebElement dictionaryId: </para>
         /// <para> 1 = createAnAccountText </para>
         /// <para> 2 = checkGenderMan </para>
         /// <para> 3 = checkGenderFemale </para>
@@ -589,12 +605,13 @@ namespace MaybeThisTime.PageObjects
         /// <para> 24 = phoneMobile </para>
         /// <para> 25 = emailAddresAlias </para>
         /// <para> 26 = submitAccountButton </para>
+        /// <para> 27 = main error message: "There is/are number error/s" </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
         /// <returns></returns>
         public string ActionElementGetAttributeValue(int dictionaryId)
         {
-            IWebElement element = iWebElementDictionary(dictionaryId);
+            IWebElement element = IWebElementDictionary(dictionaryId);
             By elementBy = ElementByDictionary(dictionaryId);
             string attributeName = "value";
             Thread.Sleep(10000);
@@ -657,19 +674,19 @@ namespace MaybeThisTime.PageObjects
 
         public void ChooseBirthDayFromDropDownList(string birthDay)
         {
-            IWebElement element = iWebElementDictionary(8);
+            IWebElement element = IWebElementDictionary(8);
             CommonFunctions.ChooseElementFromList(element, 1, birthDay);
         }
 
         public void ChooseBirthMonthsFromDropDownList(string birthMonth)
         {
-            IWebElement element = iWebElementDictionary(9);
+            IWebElement element = IWebElementDictionary(9);
             CommonFunctions.ChooseElementFromList(element, 1, birthMonth);
         }
 
         public void ChooseBirthYearFromDropDownList(string birthYear)
         {
-            IWebElement element = iWebElementDictionary(10);
+            IWebElement element = IWebElementDictionary(10);
             CommonFunctions.ChooseElementFromList(element, 1, birthYear);
         }
 
@@ -682,7 +699,7 @@ namespace MaybeThisTime.PageObjects
 
         public void ChooseState(string stateName)
         {
-            IWebElement parentElement = iWebElementDictionary(19);
+            IWebElement parentElement = IWebElementDictionary(19);
             By childElement = ElementByDictionary(29);
             CommonFunctions.ChooseElementFromList(parentElement, childElement, stateName);
         }
@@ -694,7 +711,7 @@ namespace MaybeThisTime.PageObjects
             By elementBy = ElementByDictionary(1);
             double time = 10;
             CommonFunctions.WaitUtilElementDisplayBy(elementBy, time);
-            IWebElement element = iWebElementDictionary(1);
+            IWebElement element = IWebElementDictionary(1);
             string text = CommonFunctions.GetText(element);
             return text;
         }
@@ -730,9 +747,9 @@ namespace MaybeThisTime.PageObjects
         /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
-        public void DeleteTextByClickingBackspace(int dictionaryId)
+        public void DeleteTextByClickingBackspace(IWebElement element)
         {
-            IWebElement element = iWebElementDictionary(dictionaryId);
+            //IWebElement element = IWebElementDictionary(dictionaryId);
             string attributeName = "value";
             CommonFunctions.DeleteTextByClickingBackspace(element, attributeName);
         }
@@ -766,17 +783,129 @@ namespace MaybeThisTime.PageObjects
         /// <para> 26 = submitAccountButton </para>
         /// </summary>
         /// <param name="dictionaryId"></param>
-        public void DeleteTextByCuttingIt(int dictionaryId)
+        public void DeleteTextByCuttingIt(IWebElement element)
         {
-            IWebElement element = iWebElementDictionary(dictionaryId);
+            //IWebElement element = IWebElementDictionary(dictionaryId);
             CommonFunctions.DeleteTextByCuttingIt(element);
         }
-        
 
+        /// <summary>
+        /// <para> 1 = createAnAccountText </para>
+        /// <para> 2 = checkGenderMan </para>
+        /// <para> 3 = checkGenderFemale </para>
+        /// <para> 4 = customerFirstName </para>
+        /// <para> 5 = customerLastName </para>
+        /// <para> 6 = customerEmail </para>
+        /// <para> 7 = accountPassword </para>
+        /// <para> 8 = birthDay </para>
+        /// <para> 9 = birthMonth </para>
+        /// <para> 10 = birthYear </para>
+        /// <para> 11 = checkNewsletter </para>
+        /// <para> 12 = checkSpecialOffers </para>
+        /// <para> 13 = addressFirstName </para>
+        /// <para> 14 = addressLastName </para>
+        /// <para> 15 = addressCompanyName </para>
+        /// <para> 16 = addressStreetAndNumber </para>
+        /// <para> 17 = addressApartmentNumber </para>
+        /// <para> 18 = addressCity </para>
+        /// <para> 19 = addressState </para>
+        /// <para> 20 = addressPostCode </para>
+        /// <para> 21 = addressCountry </para>
+        /// <para> 22 = additionalInfromation </para>
+        /// <para> 23 = phoneHome </para>
+        /// <para> 24 = phoneMobile </para>
+        /// <para> 25 = emailAddresAlias </para>
+        /// <para> 26 = submitAccountButton </para>
+        /// <para> ----------------------------------- </para>
+        /// <para> deleteAction :</para>
+        /// <para> 0 = delete text by clicking backspace </para>
+        /// <para> 1 = delete text by cutting it </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        public void DeleteText(int dictionaryId, int deleteAction)
+        {
+            IWebElement element = IWebElementDictionary(dictionaryId);
+ 
+            if (deleteAction == 0)
+            {
+                DeleteTextByClickingBackspace(element);
+            }
 
-
+            if (deleteAction == 1)
+            {
+                DeleteTextByCuttingIt(element);
+            }
+        }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
+        // error list
+
+        /// <summary>
+        /// <para> dictionaryId: </para>
+        /// <para> 1 = You must register at least one phone number </para>
+        /// <para> 2 = lastname is required </para>
+        /// <para> 3 = firstname is required </para>
+        /// <para> 4 = email is required</para>
+        /// <para> 5 = passwd is required </para>
+        /// <para> 6 = id_country is required </para>
+        /// <para> 7 = address1 is required </para>
+        /// <para> 8 = city is required </para>
+        /// <para> 9 = Country cannot be loaded with address->id_country </para>
+        /// <para> 10 = Country is invalid </para>
+        /// <para> 11 = alias is required. </para>
+        /// <para> 12 = This country requires you to choose a State. </para>
+        /// <para> 13 = The Zip/Postal code you've entered is invalid. It must follow this format: 00000 </para>
+        /// <para> 14 = Invalid date of birth </para>
+        /// </summary>
+        /// <param name="dictionaryId"></param>
+        /// <returns></returns>
+        public static string ErrorDictionary(int dictionaryId)
+        {
+            Dictionary<int, string> errorDictionary = new Dictionary<int, string>()
+            {
+                {1, "You must register at least one phone number."},
+                {2, "lastname is required."},
+                {3, "firstname is required."},
+                {4, "email is required."},
+                {5, "passwd is required."},
+                {6, "id_country is required."},
+                {7, "address1 is required."},
+                {8, "city is required."},
+                {9, "Country cannot be loaded with address->id_country"},
+                {10, "Country is invalid"},
+                {11, "alias is required."},
+                {12, "This country requires you to choose a State."},
+                {13, "The Zip/Postal code you've entered is invalid. It must follow this format: 00000"},
+                {14, "Invalid date of birth"}
+            };
+
+            string error = errorDictionary[dictionaryId];    
+
+            return error;
+        }
+
+        public static string ErrorNumberSentence(int number)
+        {
+            string errorNumberText;
+            if (number == 1)
+            {
+                return errorNumberText = $"There is {number} error";
+            }
+            else 
+            {
+                return errorNumberText = $"There are {number} errors";
+            }
+
+        }
+
+        public string[] ErrorWebList()
+        {
+            By errorList = ElementByDictionary(30);
+            string[] errorsList = CommonFunctions.ArrayString(errorList);
+            return errorsList;
+        }
+
+
 
 
     }

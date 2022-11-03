@@ -10,6 +10,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -200,8 +201,6 @@ namespace MaybeThisTime.Common
    
         public static void ChooseElementFromList(By findElementBy, string attributeName, string attributeValue)
         {
-           // TestContext.Progress.WriteLine("attributeName: " + attributeName);
-           // TestContext.Progress.WriteLine("attributeValue: " + attributeValue);
 
             IList<IWebElement> elementsList = driver.FindElements(findElementBy);
 
@@ -313,7 +312,88 @@ namespace MaybeThisTime.Common
             return email;
         }
 
-  //--------------------------------------------------------------------------------------------------------------------------------------
+        public static string GenerateRandomNumber(int numberLenght)
+        {
+            int minNumber = numberLenght;
+            string regex = "[0-9]";
+            string stringNumber = GenerateRandomStirng(regex, minNumber, minNumber);
+            return stringNumber;
+        }
 
+        // zip / postal code
+
+        /// <summary>
+        /// <para> action = 0 -> it generate the correct zip/ postal code (lenght = 5), zipCodeLenght any number does not matter </para>
+        /// <para> action = 1 -> it generate the wrong zip/ postal code - only digits </para>
+        /// <para> action = 2 -> it generate the wrong zip/ postal code - only letters </para>
+        /// <para> action = 3 -> it generate the wrong zip/ postal code - digits and letters </para>
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="zipCodeLenght"></param>
+        /// <returns></returns>
+        public static string GenerateZipCode (int action, int zipCodeLenght)
+        {
+            string zipCode;
+            if (action == 0)
+            {
+                int correctZipCode = 5;
+                zipCode = GenerateRandomNumber(correctZipCode);
+                return zipCode;
+            }
+            else if (action == 1)
+            {
+                zipCode = GenerateRandomNumber(zipCodeLenght);
+                return zipCode;
+            }
+            else if (action == 2)
+            {
+                string regex = "[a-zA-Z]";
+                zipCode = GenerateRandomStirng(regex, zipCodeLenght, zipCodeLenght);
+                return zipCode;
+            }
+            else if (action == 3)
+            {
+                string regex = "[a-zA-Z0-9]";
+                zipCode = GenerateRandomStirng(regex, zipCodeLenght, zipCodeLenght);
+                return zipCode;
+            }
+            else
+            {
+                zipCode = "Well, you choose the number out of the range of action xD";
+                return zipCode;
+            }
+
+
+        }
+
+        // home / mobile phone number
+        public static string GeneratePhoneNumber(int numberLenght)
+        {
+            string phoneNumber = GenerateRandomNumber(numberLenght);
+            return phoneNumber;
+        }
+
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+        public static string[] ArrayString(By element)
+        {
+            IList<IWebElement> elementList = driver.FindElements(element);
+
+            int elementListLenght = elementList.Count;
+            //TestContext.Progress.WriteLine("elementListLenght: " + elementListLenght);
+
+            string[] arraySting = new string[elementListLenght];
+
+            for (int elementId = 0; elementId < elementListLenght; elementId++)
+            {
+                arraySting[elementId] = elementList[elementId].Text;
+                //TestContext.Progress.WriteLine($"arraySting[{elementId}]" + arraySting[elementId]);
+            }
+            return arraySting;
+        }
+
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
     }
 }

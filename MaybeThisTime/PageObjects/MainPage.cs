@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MaybeThisTime.Common;
 using System.Threading;
+using Amazon.DynamoDBv2.Model.Internal.MarshallTransformations;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using System.Net.Mail;
 
 namespace MaybeThisTime.PageObjects
 {
@@ -20,29 +23,76 @@ namespace MaybeThisTime.PageObjects
             PageFactory.InitElements(driver, this);
         }
 
-        //PageObject factory
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // page objects
+        //--------------------------------------------------------------------------------------------------------------------------------------
 
         [FindsBy(How = How.XPath, Using = "//div[@class='header_user_info']/a")]
-        [CacheLookup]
         private IWebElement singInButton;
 
+        [FindsBy(How = How.Id, Using = "contact-link")]
+        private IWebElement contactUs;
 
-        private  IWebElement SingInButton()
+
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // IWebElement
+
+        public IWebElement IWebElement(IWebElement element)
         {
-            return singInButton;
+            IWebElement webElement = element;
+            return webElement;
         }
 
-        public void SingInButtonClick()
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // By
+
+        public By ElementBy(By element)
         {
-            CommonFunctions.ElementClick(SingInButton());
+            By webElement = element;
+            return webElement;
         }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // page dictionary
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+        public IWebElement IWebElementDictionary(int dictionaryId)
+        {
+            IWebElement singInButton0 = IWebElement(singInButton);
+            IWebElement contactUs0 = IWebElement(contactUs);
+
+            Dictionary<int, IWebElement> IWebElementDictionary = new Dictionary<int, IWebElement>()
+            {
+                {1, singInButton0},
+                {2, contactUs0}
+            };
+
+            IWebElement elementFromDictionary = IWebElementDictionary[dictionaryId];
+            return elementFromDictionary;
+        }
+
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        // page action
+        //--------------------------------------------------------------------------------------------------------------------------------------
+
+
 
         public LoginPage GoToLoginPage()
         {
-            CommonFunctions.ElementClick(SingInButton());
+            IWebElement elementFromDictionary = IWebElementDictionary(1);
+            CommonFunctions.ElementClick(elementFromDictionary);
             return new LoginPage(driver);
         }
 
+        public ContactUsPage GoToContactUsPage()
+        {
+            IWebElement elementFromDictionary = IWebElementDictionary(2);
+            CommonFunctions.ElementClick(elementFromDictionary);
+            return new ContactUsPage(driver);
+        }
 
     }
 
