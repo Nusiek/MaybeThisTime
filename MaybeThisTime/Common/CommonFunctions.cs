@@ -130,8 +130,6 @@ namespace MaybeThisTime.Common
             ElementCutText(element);
         }
 
-
-
         //--------------------------------------------------------------------------------------------------------------------------------------
         // convert to string
 
@@ -144,9 +142,20 @@ namespace MaybeThisTime.Common
         //--------------------------------------------------------------------------------------------------------------------------------------
         public static bool IsElementDisplayed(IWebElement element)
         {
-            bool emementDisplay;
-            emementDisplay = element.Displayed;
+            bool emementDisplay = element.Displayed;
             return emementDisplay;
+        }
+
+        public static bool IsElementEnabled(IWebElement element)
+        {
+            bool emementEnabled = element.Enabled;
+            return emementEnabled;
+        }
+
+        public static bool IsElementSelected(IWebElement element)
+        {
+            bool emementSelected = element.Selected;
+            return emementSelected;
         }
 
         public static void WaitUtilElementDisplayBy(By elementId, double timeInSeconds)
@@ -234,8 +243,8 @@ namespace MaybeThisTime.Common
             {
                 element.SelectByText($"{attributeValue}");
             }
-                
 
+            ElementClick(webElement);
         }
 
         /// <summary>
@@ -288,10 +297,10 @@ namespace MaybeThisTime.Common
 
         //--------------------------------------------------------------------------------------------------------------------------------------
 
-        public static string GenerateRandomStirng(string regexExpression, int minNumber, int maxNumber)
+        public static string GenerateRandomStirng(string regexExpression, int minLenght, int maxLenght)
         {
             Random number = new Random();
-            int randomNumber = number.Next(minNumber, maxNumber);
+            int randomNumber = number.Next(minLenght, maxLenght);
             string regularExpression = regexExpression + "{" + randomNumber + "}";
 
             Xeger xeger = new Xeger(regularExpression, new Random());
@@ -301,12 +310,12 @@ namespace MaybeThisTime.Common
 
         public static string GenerateEmailAddress()
         {
-            int minNumber = 3;
-            int maxNumber = 15;
+            int minLenght = 3;
+            int maxLenght = 15;
             string regex1 = "[a-zA-Z0-9]";
             string regex2 = "[a-zA-Z]";
-            string stringBefore = GenerateRandomStirng(regex1, minNumber, maxNumber);
-            string stringAfter = GenerateRandomStirng(regex2, minNumber, maxNumber);
+            string stringBefore = GenerateRandomStirng(regex1, minLenght, maxLenght);
+            string stringAfter = GenerateRandomStirng(regex2, minLenght, maxLenght);
 
             string email = $"{stringBefore}@{stringAfter}.com";
             return email;
@@ -314,9 +323,9 @@ namespace MaybeThisTime.Common
 
         public static string GenerateRandomNumber(int numberLenght)
         {
-            int minNumber = numberLenght;
+            //int minNumber = numberLenght;
             string regex = "[0-9]";
-            string stringNumber = GenerateRandomStirng(regex, minNumber, minNumber);
+            string stringNumber = GenerateRandomStirng(regex, numberLenght, numberLenght);
             return stringNumber;
         }
 

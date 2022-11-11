@@ -248,7 +248,7 @@ namespace MaybeThisTime.PageObjects
             IWebElement submitAccountButton0 = IWebElement(submitAccountButton);
             IWebElement mainErrorTextMessagesNumber0 = IWebElement(mainErrorTextMessagesNumber);
 
-            Dictionary<int, IWebElement> IWebElementDictionary = new Dictionary<int, IWebElement>()
+            Dictionary<int, IWebElement> IWebElementDictionary = new()
             {
                 { 1, createAnAccountText0},
                 { 2, checkGenderMan0},
@@ -354,38 +354,38 @@ namespace MaybeThisTime.PageObjects
             By addressStateByXPath0 = ElementBy(addressStatesByXPath);
             By errorList = ElementBy(errorMessagesListByXPath);
 
-            Dictionary<int, By> elementByDictionary = new Dictionary<int, By>()
+            Dictionary<int, By> elementByDictionary = new ()
             {
-                {1, createAnAccountTextBy0},
-                {2, checkGenderManBy0},
-                {3, checkGenderFemaleBy0},
-                {4, customerFirstNameBy0},
-                {5, customerLastNameBy0},
-                {6, customerEmailBy0},
-                {7, accountPasswordBy0},
-                {8, birthDayBy0},
-                {9, birthMonthsBy0},
-                {10, birthYearBy0},
-                {11, checkNewsletterBy0},
-                {12, checkSpecialOffersBy0},
-                {13, addressFirstNameBy0},
-                {14, addressLastNameBy0},
-                {15, addressCompanyNameBy0},
-                {16, addressStreetAndNumberBy0},
-                {17, addressApartmentNumberBy0},
-                {18, addressCityBy0},
-                {19, addressStateById0},
-                {20, addressStatesBy0},
-                {21, addressPostCodeBy0},
-                {22, addressCountryBy0},
-                {23, additionalInfromationBy0},
-                {24, phoneHomeBy0},
-                {25, phoneMobileBy0},
-                {26, submitAccountButtonBy0},
-                {27, typeRadioButtonBy0},
-                {28, typeCheckboxBy0},
-                {29, addressStateByXPath0},
-                {30, errorList}
+                { 1, createAnAccountTextBy0},
+                { 2, checkGenderManBy0},
+                { 3, checkGenderFemaleBy0},
+                { 4, customerFirstNameBy0},
+                { 5, customerLastNameBy0},
+                { 6, customerEmailBy0},
+                { 7, accountPasswordBy0},
+                { 8, birthDayBy0},
+                { 9, birthMonthsBy0},
+                { 10, birthYearBy0},
+                { 11, checkNewsletterBy0},
+                { 12, checkSpecialOffersBy0},
+                { 13, addressFirstNameBy0},
+                { 14, addressLastNameBy0},
+                { 15, addressCompanyNameBy0},
+                { 16, addressStreetAndNumberBy0},
+                { 17, addressApartmentNumberBy0},
+                { 18, addressCityBy0},
+                { 19, addressStateById0},
+                { 20, addressStatesBy0},
+                { 21, addressPostCodeBy0},
+                { 22, addressCountryBy0},
+                { 23, additionalInfromationBy0},
+                { 24, phoneHomeBy0},
+                { 25, phoneMobileBy0},
+                { 26, submitAccountButtonBy0},
+                { 27, typeRadioButtonBy0},
+                { 28, typeCheckboxBy0},
+                { 29, addressStateByXPath0},
+                { 30, errorList}
                
             };
 
@@ -861,7 +861,8 @@ namespace MaybeThisTime.PageObjects
         /// <returns></returns>
         public static string ErrorDictionary(int dictionaryId)
         {
-            Dictionary<int, string> errorDictionary = new Dictionary<int, string>()
+            //Dictionary<int, string> errorDictionary = new Dictionary<int, string>()
+             Dictionary<int, string> errorDictionary = new()
             {
                 {1, "You must register at least one phone number."},
                 {2, "lastname is required."},
@@ -886,14 +887,14 @@ namespace MaybeThisTime.PageObjects
 
         public static string ErrorNumberSentence(int number)
         {
-            string errorNumberText;
+            //string errorNumberText;
             if (number == 1)
             {
-                return errorNumberText = $"There is {number} error";
+                return _ = $"There is {number} error";
             }
             else 
             {
-                return errorNumberText = $"There are {number} errors";
+                return _ = $"There are {number} errors";
             }
 
         }
